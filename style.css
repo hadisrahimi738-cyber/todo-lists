@@ -1,0 +1,515 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-color: #f5f5f5;
+    --box-color: #ffffff;
+    --text-color: #222;
+    --primary: #6c5ce7;
+    --danger: #ff4757;
+    --border: #ddd;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+
+/* Dark Mode */
+
+body.dark {
+    --bg-color: #181818;
+    --box-color: #242424;
+    --text-color: #fff;
+    --border: #444;
+}
+
+
+/* Main Container */
+
+.container {
+
+    width: 95%;
+    max-width: 550px;
+
+    background: var(--box-color);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.15);
+
+    transition: .3s;
+
+}
+
+
+
+/* Header */
+
+header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+header h1 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+}
+
+
+#themeBtn {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    cursor: pointer;
+
+    background: var(--primary);
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+
+
+/* Add Todo */
+
+.add-box {
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+
+.add-box input {
+
+    flex:1;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    background:transparent;
+
+    color:var(--text-color);
+
+    font-size:15px;
+
+}
+
+
+
+.add-box button {
+
+    padding:0 25px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+
+/* Search */
+
+.search-box {
+
+    margin-bottom:20px;
+
+}
+
+
+.search-box input {
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    background:transparent;
+
+    color:var(--text-color);
+
+}
+
+
+
+/* Filters */
+
+.filters {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+
+.filter {
+
+    border:none;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    background:#eee;
+
+}
+
+
+body.dark .filter {
+
+    background:#333;
+
+    color:white;
+
+}
+
+body .filter.active {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+
+
+/* Todo List */
+
+#todoList {
+
+    list-style:none;
+
+    max-height:350px;
+
+    overflow-y:auto;
+
+}
+
+
+
+/* Todo Item */
+
+.todo-item {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:15px;
+
+    border-bottom:1px solid var(--border);
+
+    animation:show .3s;
+
+}
+
+
+@keyframes show {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.todo-left {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.todo-left input {
+
+    width:20px;
+
+    height:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+.todo-title {
+
+    font-size:16px;
+
+}
+
+
+
+.todo-item.completed .todo-title {
+
+    text-decoration:line-through;
+
+    opacity:.5;
+
+}
+
+
+
+/* Buttons */
+
+.actions {
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+
+.actions button {
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    color:white;
+
+}
+
+
+.edit {
+
+    background:#ffa502;
+
+}
+
+
+.delete {
+
+    background:var(--danger);
+
+}
+
+
+
+/* Footer */
+
+footer {
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+#clearCompleted {
+
+    border:none;
+
+    background:var(--danger);
+
+    color:white;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* Scrollbar */
+
+#todoList::-webkit-scrollbar {
+
+    width:6px;
+
+}
+
+
+#todoList::-webkit-scrollbar-thumb {
+
+    background:var(--primary);
+
+    border-radius:10px;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .container{
+
+        padding:20px;
+
+    }
+
+
+    header h1{
+
+        font-size:25px;
+
+    }
+
+
+    .add-box{
+
+        flex-direction:column;
+
+    }
+
+
+    .add-box button{
+
+        height:45px;
+
+    }
+
+}
+
+.todo-item.removing {
+
+    animation: removeItem .4s forwards;
+
+}
+
+
+@keyframes removeItem {
+
+
+    from {
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+
+    to {
+
+        opacity:0;
+
+        transform:translateX(100px);
+
+        height:0;
+
+        padding:0;
+
+        margin:0;
+
+    }
+
+}
+
+.drag {
+
+    cursor:grab;
+
+    font-size:20px;
+
+    opacity:.5;
+
+}
+
+
+.todo-item.dragging {
+
+    opacity:.5;
+
+    transform:scale(.98);
+
+}
+
